@@ -26,11 +26,22 @@ export default async function DashboardPage() {
   }
 
   return (
-    <div>
-      <h1>Dashboard</h1>
-      <p>Logged in as: {session.user.email}</p>
+    <div className="flex flex-col items-center justify-center min-h-[60vh] text-center px-6 gap-4">
+      <h1 className="text-4xl font-bold">
+        Welcome to WalCoTV
+      </h1>
 
-      <LogoutButton />
+      <p className="text-lg opacity-80">
+        Your home for local content.
+      </p>
+
+      <p className="text-sm opacity-70">
+        Logged in as {session.user.email}
+      </p>
+
+      <div className="mt-6">
+        <LogoutButton />
+      </div>
     </div>
   )
 }
