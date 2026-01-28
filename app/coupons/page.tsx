@@ -19,6 +19,13 @@ type Coupon = {
 }
 
 export default function CouponsPage() {
+  // 🔒 PUBLIC HIDE SWITCH (SAFE, REVERSIBLE)
+  useEffect(() => {
+    if (process.env.NEXT_PUBLIC_COUPONS_PUBLIC_ENABLED !== "true") {
+      window.location.replace("/")
+    }
+  }, [])
+
   const [loading, setLoading] = useState(true)
   const [coupons, setCoupons] = useState<Coupon[]>([])
   const [openCouponId, setOpenCouponId] = useState<string | null>(null)

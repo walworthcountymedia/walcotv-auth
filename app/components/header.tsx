@@ -10,6 +10,10 @@ type HeaderProps = {
 export default function Header({ email, name, role }: HeaderProps) {
   const isAdmin = role === "admin"
 
+  // 🔒 Public coupon visibility flag
+  const couponsEnabled =
+    process.env.NEXT_PUBLIC_COUPONS_PUBLIC_ENABLED === "true"
+
   const linkStyle = {
     color: "#fff",
     textDecoration: "none",
@@ -38,9 +42,12 @@ export default function Header({ email, name, role }: HeaderProps) {
           Content
         </Link>
 
-        <Link href="/coupon-book" style={linkStyle}>
-          Coupon Book
-        </Link>
+        {/* 🔒 Coupon Book hidden unless explicitly enabled */}
+        {couponsEnabled && (
+          <Link href="/coupon-book" style={linkStyle}>
+            Coupon Book
+          </Link>
+        )}
 
         {isAdmin && (
           <>
