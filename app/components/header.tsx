@@ -42,6 +42,11 @@ export default function Header({ email, name, role }: HeaderProps) {
           Content
         </Link>
 
+        {/* 🆕 Games Tab */}
+        <Link href="/games" style={linkStyle}>
+          Games
+        </Link>
+
         {/* 🔒 Coupon Book hidden unless explicitly enabled */}
         {couponsEnabled && (
           <Link href="/coupon-book" style={linkStyle}>
